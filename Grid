@@ -1,0 +1,37 @@
+const request = require('request');
+
+module.exports = function (context, eventGridEvent) {
+    var path = eventGridEvent.data.url.split('/').pop();
+    if (eventGridEvent.data.url.indexOf("/img/") > -1) {
+        var eventData = {
+            id: path,
+            url: eventGridEvent.data.url
+        };
+        processImage(context, eventData);
+    }
+};
+
+function processImage(context, eventData) {
+    // Replace <subscription key> string value with your valid subscription key.
+    var subscriptionKey = "<subscription key>";
+
+    // Replace or verify the region.
+    var uriBase = "https://eastus.api.cognitive.microsoft.com";
+
+    var options = {
+        url: uriBase + "/vision/v1.0/describe?maxCandidates=1",
+        body: '{"url": ' + '"' + eventData.url + '"}',
+        headers: {
+            "Content-Type": "application/json",
+            "Ocp-Apim-Subscription-Key": subscriptionKey
+        }
+    };
+
+    request.post(options, function (error, response, body) {
+        var temp = JSON.parse(body);
+        eventData.caption = temp.description.captions[0].text;
+        eventData.tags = temp.description.tags;
+        context.bindings.outputDocument = eventData;
+        context.done();
+    });
+}
