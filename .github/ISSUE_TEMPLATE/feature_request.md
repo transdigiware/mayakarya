@@ -1,17 +1,11 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
+about: Tehnologi Penyimpanan MayaWare
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
-
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
-
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
-
-**Additional context**
-Add any other context or screenshots about the feature request here.
+# MAYAWARE
+## Flash System Penyimpanan
+## Memberikan kinerja yang tak tertandingi dengan ukuran  latensi 100μs, dan lebih dari 34GB / detik 
+## Bandwidth hingga 5: 1 
+## Teknologi kompresi berbasis hardware.
